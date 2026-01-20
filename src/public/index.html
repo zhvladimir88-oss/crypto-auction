@@ -1,0 +1,11 @@
+<html><body>
+<h1>Crypto Auction Demo</h1>
+<div id='auction'></div>
+<input id='amount' type='number' placeholder='Ставка'><button onclick='bid()'>Сделать ставку</button>
+<script>
+function bid(){
+  fetch('/api/auction/AUCTION_ID/bid',{method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({userId:'USER_ID', amount:Number(document.getElementById('amount').value)})})
+  .then(r=>r.json()).then(console.log)
+}
+</script>
+</body></html>
